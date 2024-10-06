@@ -64,8 +64,13 @@ public class UniversityController {
     }
     @GetMapping("/reports1")
     public String report1(@ModelAttribute("group") Group group, Model model) {
-        model.addAttribute("students", studentRepository.findStudentByGroup(group));
-        return "report1";
+        try {
+            model.addAttribute("students", studentRepository.findStudentByGroup(group));
+            return "report1";
+        }
+        catch (Exception e){
+            return "redirect:/reports";
+        }
     }
 
     @PostMapping("/saveFaculty")
@@ -143,5 +148,4 @@ public class UniversityController {
         studentRepository.delete(student);
         return "redirect:/students";
     }
-
 }

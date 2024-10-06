@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name = "u_group")
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     @ManyToOne

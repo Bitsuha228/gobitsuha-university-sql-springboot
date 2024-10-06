@@ -7,28 +7,41 @@
     <link th:href="@{/univstyle.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="sidebar d-flex flex-column">
-    <h2 class="mb-4">Navigation</h2>
-    <a href="/reports" class="btn btn-secondary mb-2">Cancel</a>
-    <a href="/" class="btn btn-secondary mb-2">Faculties</a>
-    <a href="/groups" class="btn btn-secondary mb-2">Groups</a>
-    <a href="/students" class="btn btn-secondary mb-2">Students</a>
-    <a href="/reports" class="btn btn-primary mb-2">Reports</a><br>
+<div class="sidebar bg-dark">
+    <ul class="nav flex-column fs-5">
+        <li class="nav-item">
+            <a class="nav-link" href="/reports">Cancel</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">Faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/groups">Groups</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/students">Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/reports">Reports</a>
+        </li>
+    </ul>
 </div>
-<div class="content flex-grow-1 p-4">
-    <h1 class="mb-1">Go Bitsuha : Online University</h1>
-    <h4 class="mb-3">Quantity of students on each faculty:</h4>
-<table class="table table-bordered">
-    <thead class="table-dark">
-    <tr>
-        <th>Faculty</th>
-        <th>Quantity</th>
-    </tr></thead><tbody>
-    <tr th:each="strings : ${list}">
-        <td th:text ="${strings[0]}"></td>
-        <td th:text ="${strings[1]}"></td>
-    </tr></tbody>
-</table>
+<div class="flex-grow-1 overflow-y-scroll">
+    <h1 class="p-3 mb-0">Go Bitsuha : Online University</h1>
+    <h5 class="fs-5 p-1 ps-3 mb-0">Quantity of students in each faculty:</h5>
+    <div class="p-4">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Faculty</th>
+                <th>Quantity of students</th>
+            </tr></thead><tbody>
+            <tr th:each="strings : ${list}">
+                <td th:text ="${strings[0]}"></td>
+                <td th:text ="${strings[1]}"></td>
+            </tr></tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

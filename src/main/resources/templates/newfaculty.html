@@ -7,23 +7,36 @@
     <link th:href="@{/univstyle.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="sidebar d-flex flex-column">
-    <h2 class="mb-4">Navigation</h2>
-    <a href="/" class="btn btn-primary mb-2">Cancel</a>
-    <a href="/" class="btn btn-secondary mb-2">Faculties</a>
-    <a href="/groups" class="btn btn-secondary mb-2">Groups</a>
-    <a href="/students" class="btn btn-secondary mb-2">Students</a>
-    <a href="/reports" class="btn btn-secondary mb-2">Reports</a><br>
+<div class="sidebar bg-dark">
+    <ul class="nav flex-column fs-5">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Cancel</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/">Faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/groups">Groups</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/students">Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/reports">Reports</a>
+        </li>
+    </ul>
 </div>
-<div class="content flex-grow-1 p-4">
-    <h1 class="mb-1">Go Bitsuha : Online University</h1>
-    <h4 class="mb-3">Add new faculty</h4>
-<form th:action="@{/saveFaculty}" th:object="${faculty}" method="POST">
-    <label for="name" class="mb-2">Enter faculty name:</label><br>
-    <input type="text" id="name" th:field="*{name}" class="mb-2">
+<div class="flex-grow-1">
+    <h1 class="p-3 mb-0">Go Bitsuha : Online University</h1>
+    <h5 class="fs-5 p-1 ps-3 mb-0">Add new faculty:</h5>
+    <div class="p-4">
+        <form th:action="@{/saveFaculty}" th:object="${faculty}" method="POST">
+            <label for="name" class="mb-2">Enter faculty name:</label><br>
+            <input type="text" id="name" th:field="*{name}" class="mb-2">
 
-    <br><button type="submit" class="btn btn-outline-secondary">Save</button>
-</form>
+            <br><button type="submit" class="btn btn-outline-secondary">Save</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

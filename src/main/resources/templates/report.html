@@ -7,26 +7,51 @@
     <link th:href="@{/univstyle.css}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="sidebar d-flex flex-column">
-    <h2 class="mb-4">Navigation</h2>
-    <a href="/" class="btn btn-secondary mb-2">Cancel</a>
-    <a href="/" class="btn btn-secondary mb-2">Faculties</a>
-    <a href="/groups" class="btn btn-secondary mb-2">Groups</a>
-    <a href="/students" class="btn btn-secondary mb-2">Students</a>
-    <a href="/reports" class="btn btn-primary mb-2">Reports</a><br>
+<div class="sidebar bg-dark">
+    <ul class="nav flex-column fs-5">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Cancel</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">Faculties</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/groups">Groups</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/students">Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/reports">Reports</a>
+        </li>
+    </ul>
 </div>
-<div class="content flex-grow-1 p-4">
-    <h1 class="mb-1">Go Bitsuha : Online University</h1>
-    <h4 class="mb-3">Available reports:</h4>
-<form th:action="@{/reports1}" th:object="${group}" method="GET">
-    <label for="select1" class="mb-3">List of students of selected group</label>
-    <select id="select1" name="selectq" th:field="*{id}">
-        <option th:each="group1 : ${groups}" th:text ="${group1.name}" th:value="${group1.id}" ></option>
-    </select>
-    <button type="submit" class="btn btn-outline-secondary">View</button><br>
-</form>
-    <div class="mb-3">Quantity of students in each group <a href="/reports2" class="btn btn-outline-secondary">View</a><br></div>
-    <div class="mb-3">Quantity of students in each faculty <a href="/reports3" class="btn btn-outline-secondary">View</a><br></div>
+<div class="overflow-y-scroll flex-grow-1">
+    <h1 class="p-3 mb-0">Go Bitsuha : Online University</h1>
+    <h5 class="fs-5 p-1 ps-3 mb-0">Available reports:</h5>
+    <div class="row">
+        <div class="col-5 m-4 ">
+            <div class="reporthead ps-3 fs-3 p-1">Report 1</div>
+            <div class="reportbody p-2 fs-4">
+                <form th:action="@{/reports1}" th:object="${group}" method="GET">
+                    <label for="select1" class="mb-0">List of students of selected group:</label>
+                    <br>
+                    <select id="select1" name="selectq" th:field="*{id}">
+                        <option th:each="group1 : ${groups}" th:text ="${group1.name}" th:value="${group1.id}"></option>
+                    </select><br>
+                    <div class="d-flex justify-content-end"><button type="submit" class="btn fs-4 ">View ></button></div>
+                </form>
+            </div>
+        </div>
+        <div class="col-5 m-4 ">
+            <div class="reporthead ps-3 fs-3 p-1">Report 2</div>
+            <div class="reportbody p-2 fs-4">Quantity of students in each group:<br><br><div class="text-end"><a href="/reports2" class="view-link">View ></a></div></div>
+        </div>
+        <div class="col-5 m-4 ">
+            <div class="reporthead ps-3 fs-3 p-1">Report 3</div>
+            <div class="reportbody p-2 fs-4">Quantity of students in each faculty:<br><br><div class="text-end"><a href="/reports3" class="view-link">View ></a></div></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
