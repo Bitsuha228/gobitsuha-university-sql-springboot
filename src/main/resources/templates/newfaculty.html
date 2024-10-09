@@ -28,6 +28,7 @@
     <h5 class="fs-5 p-1 ps-3 mb-0">Add new faculty:</h5>
     <div class="p-4">
         <form th:action="@{/saveFaculty}" th:object="${faculty}" method="POST">
+            <div th:if="${faculty.id}"><input type="hidden" th:field="*{id}"></div>
             <label for="name" class="mb-2">Enter faculty name:</label><br>
             <input type="text" id="name" th:field="*{name}" class="mb-2">
 

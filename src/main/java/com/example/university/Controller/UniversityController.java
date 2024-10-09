@@ -148,4 +148,33 @@ public class UniversityController {
         studentRepository.delete(student);
         return "redirect:/students";
     }
+    @GetMapping("/faculties/update/{id}")
+    public String updateFaculty(@PathVariable(value = "id") long id, Model model){
+        if(facultyRepository.existsById(id)){
+            Faculty faculty = facultyRepository.findById(id).get();
+            model.addAttribute("faculty", faculty);
+            return "newfaculty";
+        }
+        return "redirect:/";
+    }
+    @GetMapping("/groups/update/{id}")
+    public String updateGroup(@PathVariable(value = "id") long id, Model model){
+        if(groupRepository.existsById(id)){
+            Group group = groupRepository.findById(id).get();
+            model.addAttribute("group", group);
+            model.addAttribute("faculties", facultyRepository.findAll());
+            return "newgroup";
+        }
+        return "redirect:/groups";
+    }
+    @GetMapping("/students/update/{id}")
+    public String updateStudent(@PathVariable(value = "id") long id, Model model){
+        if(studentRepository.existsById(id)){
+            Student student = studentRepository.findById(id).get();
+            model.addAttribute("student", student);
+            model.addAttribute("groups", groupRepository.findAll());
+            return "newstudent";
+        }
+        return "redirect:/students";
+    }
 }
