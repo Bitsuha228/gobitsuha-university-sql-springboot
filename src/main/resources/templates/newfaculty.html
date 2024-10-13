@@ -10,7 +10,7 @@
 <div class="sidebar bg-dark">
     <ul class="nav flex-column fs-5">
         <li class="nav-item">
-            <a class="nav-link active" href="/">Faculties</a>
+            <a class="nav-link active" href="/faculties">Faculties</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/groups">Groups</a>
@@ -27,13 +27,12 @@
     <h1 class="p-3 mb-0">Go Bitsuha : Online University</h1>
     <h5 class="fs-5 p-1 ps-3 mb-0">Add new faculty:</h5>
     <div class="p-4">
-        <form th:action="@{/saveFaculty}" th:object="${faculty}" method="POST">
-            <div th:if="${faculty.id}"><input type="hidden" th:field="*{id}"></div>
+        <form th:action="@{/faculties/new}" th:object="${faculty}" method="POST">
             <label for="name" class="mb-2">Enter faculty name:</label><br>
             <input type="text" id="name" th:field="*{name}" class="mb-2">
 
             <br><button type="submit" class="btn btn-outline-secondary">Save</button>
-            <a href="/"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
+            <a href="/faculties"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
         </form>
     </div>
 </div>

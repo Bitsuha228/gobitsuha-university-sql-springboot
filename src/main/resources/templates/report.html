@@ -10,7 +10,7 @@
 <div class="sidebar bg-dark">
     <ul class="nav flex-column fs-5">
         <li class="nav-item">
-            <a class="nav-link" href="/">Faculties</a>
+            <a class="nav-link" href="/faculties">Faculties</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/groups">Groups</a>
@@ -30,7 +30,7 @@
         <div class="col-5 m-4 ">
             <div class="reporthead ps-3 fs-3 p-1">Report 1</div>
             <div class="reportbody p-2 fs-4">
-                <form th:action="@{/reports1}" th:object="${group}" method="GET">
+                <form th:action="@{/reports/students-by-group}" th:object="${group}" method="GET">
                     <label for="select1" class="mb-0">List of students of selected group:</label>
                     <br>
                     <select id="select1" name="selectq" th:field="*{id}">
@@ -42,11 +42,11 @@
         </div>
         <div class="col-5 m-4 ">
             <div class="reporthead ps-3 fs-3 p-1">Report 2</div>
-            <div class="reportbody p-2 fs-4">Quantity of students in each group:<br><br><div class="text-end"><a href="/reports2" class="view-link">View ></a></div></div>
+            <div class="reportbody p-2 fs-4">Quantity of students in each group:<br><br><div class="text-end"><a href="/reports/student-quantity-by-group" class="view-link">View ></a></div></div>
         </div>
         <div class="col-5 m-4 ">
             <div class="reporthead ps-3 fs-3 p-1">Report 3</div>
-            <div class="reportbody p-2 fs-4">Quantity of students in each faculty:<br><br><div class="text-end"><a href="/reports3" class="view-link">View ></a></div></div>
+            <div class="reportbody p-2 fs-4">Quantity of students in each faculty:<br><br><div class="text-end"><a href="/reports/student-quantity-by-faculty" class="view-link">View ></a></div></div>
         </div>
     </div>
 </div>

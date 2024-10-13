@@ -10,7 +10,7 @@
 <div class="sidebar bg-dark">
     <ul class="nav flex-column fs-5">
         <li class="nav-item">
-            <a class="nav-link" href="/">Faculties</a>
+            <a class="nav-link" href="/faculties">Faculties</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active " href="/groups">Groups</a>
@@ -27,8 +27,7 @@
     <h1 class="p-3 mb-0">Go Bitsuha : Online University</h1>
     <h5 class="fs-5 p-1 ps-3 mb-0">Add new group:</h5>
     <div class="p-4">
-        <form th:action="@{/saveGroup}" th:object="${group}" method="POST">
-            <div th:if="${group.id}"><input type="hidden" th:field="*{id}"></div>
+        <form th:action="@{/groups/new}" th:object="${group}" method="POST">
             <label for="name" class="mb-2">Enter group name:</label><br>
             <input type="text" id="name" th:field="*{name}" class="mb-2"><br>
 
