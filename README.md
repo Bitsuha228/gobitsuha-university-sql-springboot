@@ -1,10 +1,10 @@
 Views:
 
 1)group_student_quantity:
-create view group_student_quantity as select u_group.name, count(student.name) as quantity from student right join u_group on student.u_group_id = u_group.id group by u_group.name;
+create view group_student_quantity as select u_group.name, count(student.name) as quantity, u_group.faculty_id as faculty_id from student right join u_group on student.u_group_id = u_group.id group by u_group.name;
 
 2)faculty_student_quantity:
-create view  faculty_student_quantity as select faculty.name, count(*) as quantity from faculty, u_group, student where student.u_group_id = u_group.id and u_group.faculty_id = faculty.id group by faculty.name;
+create view  faculty_student_quantity as select faculty.name, count(*) as quantity, faculty.id as id from faculty, u_group, student where student.u_group_id = u_group.id and u_group.faculty_id = faculty.id group by faculty.name;
 
 Stored pocedures:
 

@@ -65,6 +65,12 @@ public class UniversityController {
         model.addAttribute("list", facultyRepository.StudentCountByFaculties());
         return "report3";
     }
+    @GetMapping("/reports/student-quantity-by-group-and-faculty")
+    public String repost4(Model model){
+        model.addAttribute("faculty_list", facultyRepository.StudentCountByFaculties());
+        model.addAttribute("group_list", groupRepository.StudentCountByGroups());
+        return "report4";
+    }
     @GetMapping("/reports/students-by-group")
     public String report1(@ModelAttribute("group") Group group, Model model) {
         try {
@@ -195,4 +201,5 @@ public class UniversityController {
         }
         return "redirect:/students";
     }
+
 }
