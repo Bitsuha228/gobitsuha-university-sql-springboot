@@ -33,9 +33,9 @@
                 <th>Faculty</th>
                 <th>Quantity of students</th>
             </tr></thead><tbody>
-            <tr th:each="strings : ${list}">
-                <td th:text ="${strings[0]}"></td>
-                <td th:text ="${strings[1]}"></td>
+            <tr th:each="FacultyView : ${list}">
+                <td th:text ="${FacultyView.name}"></td>
+                <td th:text ="${FacultyView.quantity}"></td>
             </tr></tbody>
         </table>
     </div>

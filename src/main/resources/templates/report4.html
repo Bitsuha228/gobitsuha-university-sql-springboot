@@ -29,21 +29,21 @@
     <h5 class="fs-5 p-1 ps-3 mb-0">Quantity of students in each faculty and group:</h5>
     <div class="p-4">
         <div class="accordion" id="accordionExample">
-            <div th:each="faculty : ${faculty_list}" class="accordion-item" th:id="heading- + ${faculty[2]}">
+            <div th:each="faculty : ${faculty_group_views}" class="accordion-item" th:id="heading- + ${faculty.id}">
                 <div class="accordion-header">
-                    <button th:text ="${faculty[0]}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" th:attr="data-bs-target='#collapse-' + ${faculty[2]},aria-controls='collapse-' + ${faculty[2]}">
+                    <button th:text ="${faculty.name}" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" th:attr="data-bs-target='#collapse-' + ${faculty.id},aria-controls='collapse-' + ${faculty.id}">
                     </button>
                 </div>
-                <div  class="accordion-collapse collapse" th:id="collapse- + ${faculty[2]}" th:attr="aria-labelledby='heading-' + ${faculty[2]}">
+                <div  class="accordion-collapse collapse" th:id="collapse- + ${faculty.id}" th:attr="aria-labelledby='heading-' + ${faculty.id}">
                     <div class="accordion-body p-0">
                         <table class="table table-bordered">
-                            <tr th:each="group : ${group_list}" th:if="${group[2]} == ${faculty[2]}">
-                                <td th:text ="${group[0]}" style="width: 60%"></td>
-                                <td th:text ="${group[1]}"></td>
+                            <tr th:each="group : ${faculty.groupReports}">
+                                <td th:text ="${group.name}" style="width: 60%"></td>
+                                <td th:text ="${group.quantity}"></td>
                             </tr>
                             <tr>
                                 <td style="width: 60%">Total quantity:</td>
-                                <td th:text ="${faculty[1]}"></td>
+                                <td th:text ="${faculty.quantity}"></td>
                             </tr>
                         </table>
                     </div>

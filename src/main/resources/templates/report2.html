@@ -33,9 +33,9 @@
                 <th>Group</th>
                 <th>Quantity of students</th>
             </tr></thead><tbody>
-        <tr th:each="strings : ${list}">
-            <td th:text ="${strings[0]}"></td>
-            <td th:text ="${strings[1]}"></td>
+        <tr th:each="GroupView : ${list}">
+            <td th:text ="${GroupView.name}"></td>
+            <td th:text ="${GroupView.quantity}"></td>
         </tr></tbody>
         </table>
     </div>

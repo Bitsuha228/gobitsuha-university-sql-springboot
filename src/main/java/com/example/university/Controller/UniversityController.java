@@ -6,22 +6,23 @@ import com.example.university.DataAccess.Student;
 import com.example.university.Repositories.FacultyRepository;
 import com.example.university.Repositories.GroupRepository;
 import com.example.university.Repositories.StudentRepository;
+import com.example.university.Services.FacultyGroupReportService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLException;
 
 @Controller
 public class UniversityController {
     private final FacultyRepository facultyRepository;
     private final GroupRepository groupRepository;
     private final StudentRepository studentRepository;
+    private final FacultyGroupReportService facultyGroupReportService;
 
-    public UniversityController(FacultyRepository facultyRepository, GroupRepository groupRepository, StudentRepository studentRepository) {
+    public UniversityController(FacultyRepository facultyRepository, GroupRepository groupRepository, StudentRepository studentRepository, FacultyGroupReportService facultyGroupReportService) {
         this.facultyRepository = facultyRepository;
         this.groupRepository = groupRepository;
         this.studentRepository = studentRepository;
+        this.facultyGroupReportService = facultyGroupReportService;
     }
     @GetMapping("/")
     public String Redirect(){
@@ -67,8 +68,7 @@ public class UniversityController {
     }
     @GetMapping("/reports/student-quantity-by-group-and-faculty")
     public String repost4(Model model){
-        model.addAttribute("faculty_list", facultyRepository.StudentCountByFaculties());
-        model.addAttribute("group_list", groupRepository.StudentCountByGroups());
+        model.addAttribute("faculty_group_views", facultyGroupReportService.getFacultyGroupViews());
         return "report4";
     }
     @GetMapping("/reports/students-by-group")
@@ -172,7 +172,7 @@ public class UniversityController {
         studentRepository.deleteById(id);
         return "redirect:/students";
     }
-    @GetMapping("/faculties/{id}")
+    @GetMapping("/faculties/{id}/update")
     public String updateFaculty(@PathVariable(value = "id") long id, Model model){
         if(facultyRepository.existsById(id)){
             Faculty faculty = facultyRepository.findById(id).get();
@@ -181,7 +181,7 @@ public class UniversityController {
         }
         return "redirect:/";
     }
-    @GetMapping("/groups/{id}")
+    @GetMapping("/groups/{id}/update")
     public String updateGroup(@PathVariable(value = "id") long id, Model model){
         if(groupRepository.existsById(id)){
             Group group = groupRepository.findById(id).get();
@@ -191,7 +191,7 @@ public class UniversityController {
         }
         return "redirect:/groups";
     }
-    @GetMapping("/students/{id}")
+    @GetMapping("/students/{id}/update")
     public String updateStudent(@PathVariable(value = "id") long id, Model model){
         if(studentRepository.existsById(id)){
             Student student = studentRepository.findById(id).get();
@@ -201,5 +201,4 @@ public class UniversityController {
         }
         return "redirect:/students";
     }
-
 }

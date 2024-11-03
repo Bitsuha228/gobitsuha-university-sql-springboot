@@ -1,12 +1,24 @@
-Views:
+**Views:**
 
-1)group_student_quantity:
-create view group_student_quantity as select u_group.name, count(student.name) as quantity, u_group.faculty_id as faculty_id from student right join u_group on student.u_group_id = u_group.id group by u_group.name;
+No SQL views are used now, instead I use JPQL queries inside src/main/java/com/example/university/Repositories folder to create reports, and store results using objects of classes from src/main/java/com/example/university/ReprtDTOs.
 
-2)faculty_student_quantity:
-create view  faculty_student_quantity as select faculty.name, count(*) as quantity, faculty.id as id from faculty, u_group, student where student.u_group_id = u_group.id and u_group.faculty_id = faculty.id group by faculty.name;
+**REST API reference (executed in Windows PowerShell):**
 
-Stored pocedures:
+POST:
+iwr -Method POST https://gobitsuha-university-sql-springboot.onrender.com/api/faculties/new -H @{'Content-Type' = 'application/json'} -Body '{"name": "ssss"}'
+iwr -Method POST https://gobitsuha-university-sql-springboot.onrender.com/api/groups/new -H @{'Content-Type' = 'application/json'} -Body '{"name": "dl-1", "faculty": {"id": 502}}'
+
+GET:
+iwr -Method GET https://gobitsuha-university-sql-springboot.onrender.com/api/groups/352
+iwr -Method GET https://gobitsuha-university-sql-springboot.onrender.com/api/reports/student-quantity-by-faculty
+
+PUT:
+iwr -Method PUT https://gobitsuha-university-sql-springboot.onrender.com/api/faculties/502 -H @{'Content-Type' = 'application/json'} -Body '{"name": "ssss1"}'
+
+DELETE:
+iwr -Method DELETE https://gobitsuha-university-sql-springboot.onrender.com/api/faculties/502
+
+**Stored pocedures (used to auto delete from tables with foreign keys):**
 
 1)clearAllByFaculty:
 delimiter &&
